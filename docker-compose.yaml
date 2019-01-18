@@ -1,0 +1,21 @@
+version: '3.2'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ror-Dockerfile
+    volumes:
+      - type: volume
+        source: bundle
+        target: /box
+
+    command: ./start.sh
+    ports:
+      - 3000:3000
+
+  box:
+    image: busybox
+    volumes:
+      - "bundle:/box"
+volumes:
+  bundle:
