@@ -3,15 +3,17 @@ services:
   app:
     build:
       context: .
-      dockerfile: ror-Dockerfile
+      dockerfile: Dockerfile
     volumes:
       - type: volume
         source: bundle
         target: /box
-
-    command: ./start.sh
+      - type: bind
+        source: ./
+        target: /rubyfun
     ports:
       - 3000:3000
+    command: ./start.sh
 
   box:
     image: busybox
