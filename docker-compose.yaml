@@ -7,7 +7,7 @@ services:
     volumes:
       - type: volume
         source: bundle
-        target: /box
+        target: /gems
       - type: bind
         source: ./
         target: /rubyfun
