@@ -1,0 +1,26 @@
+version: '3.2'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #image: shadjachaudhari/docker-compose-bundle:rubyfun
+    volumes:
+      - type: volume
+        source: bundle
+        target: /gems
+      - type: bind
+        source: ./
+        target: /rubyfun
+      - /rubyfun/db
+      - /rubyfun/tmp
+    ports:
+      - 3000:3000
+    command: ./start.sh
+
+  # box:
+  #   image: busybox
+  #   volumes:
+  #     - "bundle:/box"
+volumes:
+  bundle:
